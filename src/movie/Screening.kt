@@ -15,5 +15,7 @@ data class Screening(
     fun getStartTime(): LocalDateTime = screenDateTime
 
     fun getEndTime(): LocalDateTime = screenDateTime.plusMinutes(movie.runningTime.toMinutes())
+
+    fun calculateTotalAmount(audienceCount: Int): Money = price * audienceCount
 }
 
