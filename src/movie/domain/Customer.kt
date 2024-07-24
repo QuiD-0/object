@@ -1,4 +1,4 @@
-package movie
+package movie.domain
 
 data class Customer(
     val name: String,

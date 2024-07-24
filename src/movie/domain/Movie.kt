@@ -1,4 +1,4 @@
-package movie
+package movie.domain
 
 import java.time.Duration
 

@@ -1,5 +1,8 @@
 package movie
 
+import movie.domain.Money
+import movie.domain.Movie
+import movie.domain.Screening
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

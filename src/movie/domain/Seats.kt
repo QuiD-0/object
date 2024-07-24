@@ -1,4 +1,4 @@
-package movie
+package movie.domain
 
 data class Seats(
     val reserved: MutableList<Customer>,

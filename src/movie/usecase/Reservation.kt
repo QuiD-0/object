@@ -1,4 +1,8 @@
-package movie
+package movie.usecase
+
+import movie.domain.DiscountPolicy
+import movie.domain.NoneDiscountPolicy
+import movie.domain.*
 
 data class Reservation(
     val screening: Screening,
@@ -17,3 +21,7 @@ data class Reservation(
     }
 }
 
+data class ReservationResponse(
+    val tickets: List<Ticket>,
+    val remainMoney: Money
+)
