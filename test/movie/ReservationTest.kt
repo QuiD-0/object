@@ -16,7 +16,7 @@ class ReservationTest {
         val customer = Customer("홍길동", Money(20000))
 
         val reservation = Reservation(screening, Seats(mutableListOf(), 100))
-        val response = reservation.invoke(Money(20000), listOf(customer))
+        val response = reservation.invoke(Money(20000), listOf(customer), NoneDiscountPolicy)
 
         assertEquals(1, response.tickets.size)
     }

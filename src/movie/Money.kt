@@ -20,4 +20,6 @@ data class Money(
     operator fun minus(money: Money): Money = copy(amount = this.amount - money.amount)
 
     operator fun times(audienceCount: Int): Money = copy(amount = this.amount * BigDecimal(audienceCount))
+
+    operator fun div(i: Int): Money = copy(amount = this.amount / BigDecimal(i))
 }
