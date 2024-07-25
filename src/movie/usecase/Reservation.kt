@@ -16,7 +16,7 @@ data class Reservation(
         seats.reserve(customers)
         return ReservationResponse(
             List(customers.size) { Ticket(screening) },
-            money - screening.calculateTotalAmount(customers.size) - discountPolicy.discountAmount()
+            money - FeeCalculator(screening.getTotalAmount(customers.size), discountPolicy).calculate()
         )
     }
 }
