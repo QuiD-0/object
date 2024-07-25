@@ -1,22 +1,20 @@
 package movie.usecase
 
-import movie.domain.DiscountPolicy
-import movie.domain.NoneDiscountPolicy
 import movie.domain.*
 
 data class Reservation(
     val screening: Screening,
-    val seats: Seats,
+    val payMoney: PayMethod,
+    val customers: List<Customer>,
+    val discountPolicy: DiscountPolicy
 ) {
-    fun invoke(
-        money: Money,
-        customers: List<Customer>,
-        discountPolicy: DiscountPolicy = NoneDiscountPolicy
-    ): ReservationResponse {
-        seats.reserve(customers)
+    fun invoke(): ReservationResponse {
+        screening.reserve(customers)
+        val totalPrice = discountPolicy.discountAmount(screening.getTotalAmount(customers.size))
+
         return ReservationResponse(
             List(customers.size) { Ticket(screening) },
-            money - FeeCalculator(screening.getTotalAmount(customers.size), discountPolicy).calculate()
+            payMoney.pay(totalPrice)
         )
     }
 }

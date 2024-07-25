@@ -1,30 +1,27 @@
 package movie.domain
 
-import java.math.BigDecimal
-
 sealed interface DiscountPolicy {
-    fun discountAmount() : Money
+    fun discountAmount(amount: Money) : Money
 }
 
 data object NoneDiscountPolicy : DiscountPolicy {
-    override fun discountAmount(): Money {
-        return Money(BigDecimal.ZERO)
+    override fun discountAmount(amount: Money): Money {
+        return amount
     }
 }
 
 data class PercentDiscountPolicy(
-    val amount : Money,
     val percent: Int
 ) : DiscountPolicy {
-    override fun discountAmount(): Money {
-        return (amount * percent) / 100
+    override fun discountAmount(amount: Money): Money {
+        return amount - (amount * percent) / 100
     }
 }
 
 data class AmountDiscountPolicy(
     val discountAmount: Money
 ) : DiscountPolicy {
-    override fun discountAmount(): Money {
-        return discountAmount
+    override fun discountAmount(amount: Money): Money {
+        return amount - discountAmount
     }
 }

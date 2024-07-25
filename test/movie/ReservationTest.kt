@@ -14,12 +14,12 @@ class ReservationTest {
     @DisplayName("예매")
     fun reserve() {
         val movie = Movie("반지의 제왕", Duration.ofMinutes(180))
-        val screening = Screening(movie, 1, Money(10000), LocalDateTime.of(2021, 10, 1, 10, 0))
-        val customer = Customer("홍길동", Money(20000))
+        val screening = Screening(movie, 1, Money(10000), Seats(mutableListOf(),100), LocalDateTime.now())
+        val customers = listOf(Customer("홍길동", Money(10000)), Customer("김철수", Money(10000)))
 
-        val reservation = Reservation(screening, Seats(mutableListOf(), 100))
-        val response = reservation.invoke(Money(20000), listOf(customer), NoneDiscountPolicy)
+        val reservation = Reservation(screening, Cash(Money(10000)), customers, PercentDiscountPolicy(50))
+        val result = reservation.invoke()
 
-        assertEquals(1, response.tickets.size)
+        assertEquals(Money(0), result.remainMoney)
     }
 }
