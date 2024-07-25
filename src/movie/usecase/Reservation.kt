@@ -10,11 +10,12 @@ data class Reservation(
 ) {
     fun invoke(): ReservationResponse {
         screening.reserve(customers)
-        val totalPrice = discountPolicy.discountAmount(screening.getTotalAmount(customers.size))
+        val totalAmount = screening.getTotalAmount(customers.size)
+        val finalPrice = discountPolicy.discountAmount(totalAmount)
 
         return ReservationResponse(
             List(customers.size) { Ticket(screening) },
-            payMoney.pay(totalPrice)
+            payMoney.pay(finalPrice)
         )
     }
 }

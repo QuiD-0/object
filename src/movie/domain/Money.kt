@@ -8,7 +8,7 @@ data class Money(
     constructor(amount: Int) : this(BigDecimal(amount))
 
     init {
-        require(amount >= BigDecimal.ZERO) { "금액은 0원 이상이어야 합니다." }
+        require(amount >= BigDecimal.ZERO) { "잔액이 부족합니다." }
     }
 
     override fun toString(): String = "$amount 원"
