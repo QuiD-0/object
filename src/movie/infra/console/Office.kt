@@ -1,14 +1,21 @@
 package movie.infra.console
 
-import movie.domain.Money
-import movie.domain.Movie
-import movie.domain.Screening
-import movie.domain.Seats
+import movie.domain.*
 import java.time.Duration
 import java.time.LocalDateTime
+import java.util.*
 
 fun main() {
-    val command = Office().greeting()
+    val office = Office()
+    val customer = office.customerInit()
+    val command = office.greeting()
+    when (command) {
+        "1" -> println("영화 예매")
+        "2" -> println("예매 확인")
+        "3" -> println("예매 취소")
+        "4" -> return
+        else -> println("잘못된 입력입니다.")
+    }
 }
 
 class Office {
@@ -33,5 +40,22 @@ class Office {
         println("4. 프로그램 종료")
         println("메뉴를 선택해주세요.")
         return readln()
+    }
+
+    fun customerInit(): List<Customer> {
+        val customers = mutableListOf<Customer>()
+        println("고객 정보를 입력해주세요.")
+        while (true) {
+            print("이름을 입력해주세요: ")
+            val name = readln()
+            print("금액을 입력해주세요: ")
+            val money = Money(readln().toInt())
+            customers.add(Customer(name, money))
+            print("계속 입력하시겠습니까? (Y/N): ")
+            if (readln().uppercase(Locale.getDefault()) == "N") {
+                break
+            }
+        }
+        return customers
     }
 }
