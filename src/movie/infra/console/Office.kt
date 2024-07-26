@@ -1,6 +1,9 @@
 package movie.infra.console
 
 import movie.domain.*
+import movie.usecase.Reservation
+import movie.usecase.discountPolicy.NoneDiscountPolicy
+import movie.usecase.payMethod.Cash
 import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
@@ -10,7 +13,7 @@ fun main() {
     val customer = office.customerInit()
     val command = office.greeting()
     when (command) {
-        "1" -> println("영화 예매")
+        "1" -> office.reserve(customer)
         "2" -> println("예매 확인")
         "3" -> println("예매 취소")
         "4" -> return
@@ -57,5 +60,21 @@ class Office {
             }
         }
         return customers
+    }
+
+    fun reserve(customer: List<Customer>) {
+        println("예매할 영화를 선택해주세요.")
+        screening.forEachIndexed { index, it ->
+            println("${index + 1}. ${it.movie.title}")
+        }
+        val movieIndex = readln().toInt() - 1
+        val selectedScreening = screening[movieIndex]
+        val reservation = Reservation(selectedScreening, Cash(Money(20000)), customer, NoneDiscountPolicy)
+        val result = reservation.invoke()
+        println("예매가 완료되었습니다.")
+        result.tickets.forEach {
+            println("영화: ${it.movieName}, 상영시간: ${it.playTime}, 좌석: ${it.sequence}")
+        }
+        println("남은 금액: ${result.remainMoney.amount}")
     }
 }
