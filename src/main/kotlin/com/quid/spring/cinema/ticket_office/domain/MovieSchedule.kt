@@ -1,10 +1,11 @@
-package com.quid.spring.cinema.movieSchedule.domain
+package com.quid.spring.cinema.ticket_office.domain
 
-import com.quid.spring.cinema.movie.domain.Movie
 import java.time.LocalDateTime
 
 data class MovieSchedule(
-    val movie: Movie,
+    val id: Long,
+    val movieId: Long,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime
-)
+) {
+}

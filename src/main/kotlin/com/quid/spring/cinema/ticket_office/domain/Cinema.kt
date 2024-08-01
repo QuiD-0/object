@@ -1,4 +1,4 @@
-package com.quid.spring.cinema.ticketOffice.domain
+package com.quid.spring.cinema.ticket_office.domain
 
 data class Cinema(
     val id: Long,
