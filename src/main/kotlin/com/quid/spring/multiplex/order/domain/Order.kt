@@ -1,4 +1,4 @@
-package com.quid.spring.cinema.order.domain
+package com.quid.spring.multiplex.order.domain
 
 data class Order(
     val id: Long,
@@ -7,8 +7,7 @@ data class Order(
     val couponId: Long?,
     val status: OrderStatus,
     val createdAt: Long,
-    val updatedAt: Long,
-    val version: Long
+    val updatedAt: Long
 ) {
 }
 
