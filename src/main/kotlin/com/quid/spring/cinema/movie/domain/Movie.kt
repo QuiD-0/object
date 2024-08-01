@@ -1,4 +1,4 @@
-package com.quid.spring.cinema.domain
+package com.quid.spring.cinema.movie.domain
 
 data class Movie(
     val id: Long,
