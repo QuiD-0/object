@@ -1,4 +1,4 @@
-package com.quid.spring.multiplex.office
+package com.quid.spring.multiplex.office.domain
 
 import java.math.BigDecimal
 

@@ -1,7 +1,7 @@
 package com.quid.spring.multiplex.movie.domain
 
 data class Movie(
-    val id: Long,
+    val id: Long?,
     val title: String,
     val duration: Int,
     val genre: String,

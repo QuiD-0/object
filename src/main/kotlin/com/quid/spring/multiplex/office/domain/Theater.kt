@@ -1,4 +1,4 @@
-package com.quid.spring.multiplex.office
+package com.quid.spring.multiplex.office.domain
 
 data class Theater(
     val id: Long,
