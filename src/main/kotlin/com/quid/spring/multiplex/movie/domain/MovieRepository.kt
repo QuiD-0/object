@@ -1,6 +1,6 @@
 package com.quid.spring.multiplex.movie.domain
 
-interface MovieSaveRepository {
+interface MovieRepository {
 
     fun save(movie: Movie): Movie
 }
