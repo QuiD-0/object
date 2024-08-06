@@ -32,3 +32,5 @@ bin/
 ### Gradle ###
 .gradle/
 build/
+
+/docker/
