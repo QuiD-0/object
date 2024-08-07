@@ -1,13 +1,14 @@
 package com.quid.spring.multiplex.movie.infra.repository
 
 import jakarta.persistence.*
+import jakarta.persistence.GenerationType.IDENTITY
 
 @Entity
 @Table(name = "MOVIE")
 class MovieEntity(
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     val id: Long?,
     @Column(name = "TITLE")
     val title: String,
