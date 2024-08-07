@@ -5,6 +5,6 @@ data class Cinema(
     val name: String,
     val location: String,
     val theaters: List<Theater>,
-    val boxOfficeId: Long
+    val boxOfficeId: BoxOffice
 ) {
 }
