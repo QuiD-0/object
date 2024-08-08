@@ -16,7 +16,7 @@ class CinemaEntity(
     @JoinColumn(name = "CINEMA_ID")
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     val theaters: List<TheaterEntity>,
-    @JoinColumn(name = "CINEMA_ID")
+    @JoinColumn(name = "BOX_OFFICE_ID")
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     val boxOffice: BoxOfficeEntity
 ) {
