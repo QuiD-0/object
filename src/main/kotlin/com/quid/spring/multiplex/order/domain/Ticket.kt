@@ -1,4 +1,4 @@
-package com.quid.spring.multiplex.office.domain
+package com.quid.spring.multiplex.order.domain
 
 data class Ticket(
     val id: Long,
