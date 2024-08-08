@@ -2,6 +2,8 @@ package com.quid.spring.multiplex.movie.infra.repository
 
 import com.quid.spring.multiplex.movie.domain.Movie
 import com.quid.spring.multiplex.movie.domain.MovieRepository
+import com.quid.spring.multiplex.movie.infra.repository.entity.toDomain
+import com.quid.spring.multiplex.movie.infra.repository.entity.toEntity
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional

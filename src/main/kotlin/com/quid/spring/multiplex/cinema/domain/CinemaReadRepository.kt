@@ -1,5 +1,5 @@
 package com.quid.spring.multiplex.cinema.domain
 
-interface CinemaRepository {
+interface CinemaReadRepository {
     fun findBy(id: Long): Cinema
 }

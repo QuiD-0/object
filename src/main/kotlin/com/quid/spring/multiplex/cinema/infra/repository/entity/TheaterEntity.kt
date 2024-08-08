@@ -8,7 +8,7 @@ class TheaterEntity(
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
     @Column(name = "NAME")
     val name: String,
     @Column(name = "LOCATION")

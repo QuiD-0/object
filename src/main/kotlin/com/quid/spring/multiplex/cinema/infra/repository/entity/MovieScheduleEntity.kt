@@ -9,7 +9,7 @@ class MovieScheduleEntity(
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
     @Column(name = "MOVIE_ID")
     val movieId: Long,
     @Column(name = "START_TIME")

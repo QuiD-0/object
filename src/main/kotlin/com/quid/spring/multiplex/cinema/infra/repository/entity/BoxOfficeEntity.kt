@@ -9,7 +9,7 @@ class BoxOfficeEntity(
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
     @Column(name = "TICKET_PRICE")
     val ticketPrice: BigDecimal,
     @JoinColumn(name = "BOX_OFFICE_ID")

@@ -35,3 +35,39 @@ fun toTheater(theaterEntity: TheaterEntity): Theater = Theater(
     location = theaterEntity.location,
     capacity = theaterEntity.capacity
 )
+
+fun toEntity(cinema: Cinema): CinemaEntity {
+    return CinemaEntity(
+        id = cinema.id,
+        name = cinema.name,
+        location = cinema.location,
+        theaters = cinema.theaters.map { toEntity(it) },
+        boxOffice = toEntity(cinema.boxOffice)
+    )
+}
+
+fun toEntity(theater: Theater): TheaterEntity {
+    return TheaterEntity(
+        id = theater.id,
+        name = theater.name,
+        location = theater.location,
+        capacity = theater.capacity
+    )
+}
+
+fun toEntity(boxOffice: BoxOffice): BoxOfficeEntity {
+    return BoxOfficeEntity(
+        id = boxOffice.id,
+        ticketPrice = boxOffice.ticketPrice,
+        movieSchedule = boxOffice.movieSchedule.map { toEntity(it) }
+    )
+}
+
+fun toEntity(movieSchedule: MovieSchedule): MovieScheduleEntity {
+    return MovieScheduleEntity(
+        id = movieSchedule.id,
+        movieId = movieSchedule.movieId,
+        startTime = movieSchedule.startTime,
+        endTime = movieSchedule.endTime
+    )
+}
