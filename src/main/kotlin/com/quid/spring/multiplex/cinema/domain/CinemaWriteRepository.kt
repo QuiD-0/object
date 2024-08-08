@@ -1,5 +1,5 @@
 package com.quid.spring.multiplex.cinema.domain
 
-interface CinemaPersistRepository {
+interface CinemaWriteRepository {
     fun save(cinema: Cinema): Long
 }

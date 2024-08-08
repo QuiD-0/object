@@ -2,10 +2,12 @@ package com.quid.spring.multiplex.cinema.infra.repository
 
 import com.quid.spring.multiplex.cinema.domain.*
 import com.quid.spring.multiplex.cinema.infra.repository.entity.toEntity
+import org.springframework.stereotype.Repository
 
-class CinemaPersistRdbRepository(
+@Repository
+class CinemaWriteRdbRepository(
     private val cinemaJpaRepository: CinemaJpaRepository
-): CinemaPersistRepository {
+): CinemaWriteRepository {
     override fun save(cinema: Cinema): Long {
         return cinemaJpaRepository.save(toEntity(cinema)).id!!
     }

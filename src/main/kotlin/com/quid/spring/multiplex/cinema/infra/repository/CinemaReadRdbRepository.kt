@@ -18,4 +18,8 @@ class CinemaReadRdbRepository(
             ?.let { toCinema(it) }
             ?: throw IllegalArgumentException("Cinema not found with id: $id")
     }
+
+    override fun existsBy(name: String): Boolean {
+        return cinemaJpaRepository.existsByName(name)
+    }
 }
