@@ -6,12 +6,12 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class MovieSave(
+class MovieSaveUseCase(
     private val movieRepository: MovieRepository
 ) {
     val log = LoggerFactory.getLogger(this::class.java)!!
 
-    fun save(movie: Movie): Movie {
+    fun invoke(movie: Movie): Long {
         log.info("SAVE MOVIE : $movie")
         return movieRepository.save(movie)
     }

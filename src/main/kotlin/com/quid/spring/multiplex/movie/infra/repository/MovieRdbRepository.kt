@@ -14,9 +14,9 @@ class MovieRdbRepository(
 ) : MovieRepository {
 
     @Transactional
-    override fun save(movie: Movie): Movie {
+    override fun save(movie: Movie): Long {
         val entity = movieJpaRepository.save(toEntity(movie))
-        return toDomain(entity)
+        return entity.id!!
     }
 
     @Transactional(readOnly = true)

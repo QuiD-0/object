@@ -2,23 +2,18 @@ package com.quid.spring.multiplex.cinema.infra.controller
 
 import com.quid.spring.multiplex.cinema.infra.controller.request.CinemaRegistRequest
 import com.quid.spring.multiplex.cinema.usecase.CinemaFindUseCase
-import com.quid.spring.multiplex.cinema.usecase.CinemaPersistUseCase
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.quid.spring.multiplex.cinema.usecase.CinemaSaveUseCase
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/cinema")
 class CinemaController(
-    private val cinemaPersist: CinemaPersistUseCase,
+    private val cinemaSave: CinemaSaveUseCase,
     private val cinemaFind: CinemaFindUseCase
 ) {
     @GetMapping("/{id}")
     fun findCinema(@PathVariable id: Long) = cinemaFind.findCinemaBy(id)
 
     @PostMapping
-    fun regist(@RequestBody request: CinemaRegistRequest) = cinemaPersist.invoke(request)
+    fun regist(@RequestBody request: CinemaRegistRequest) = cinemaSave.invoke(request.toCinema())
 }

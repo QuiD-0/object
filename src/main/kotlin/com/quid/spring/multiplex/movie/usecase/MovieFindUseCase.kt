@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class MovieFind(
+class MovieFindUseCase(
     private val movieRepository: MovieRepository
 ) {
     val log = LoggerFactory.getLogger(this::class.java)!!

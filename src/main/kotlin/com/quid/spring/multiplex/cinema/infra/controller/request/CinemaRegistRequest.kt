@@ -11,13 +11,13 @@ data class CinemaRegistRequest(
     val theaters: List<TheaterRegistRequest>,
     val boxOffice: BoxOfficeRegistRequest
 ) {
-    fun toDomain(): Cinema {
+    fun toCinema(): Cinema {
         return Cinema(
             id = null,
             name = cinemaName,
             location = location,
-            theaters = theaters.map { it.toDomain() },
-            boxOffice = boxOffice.toDomain()
+            theaters = theaters.map { it.toTheater() },
+            boxOffice = boxOffice.toBoxOffice()
         )
     }
 }
@@ -27,7 +27,7 @@ data class TheaterRegistRequest(
     val location: String,
     val capacity: Int
 ) {
-    fun toDomain(): Theater {
+    fun toTheater(): Theater {
         return Theater(
             id = null,
             name = name,
@@ -40,7 +40,7 @@ data class TheaterRegistRequest(
 data class BoxOfficeRegistRequest(
     val ticketPrice: BigDecimal,
 ) {
-    fun toDomain(): BoxOffice {
+    fun toBoxOffice (): BoxOffice {
         return BoxOffice(
             id = null,
             ticketPrice = ticketPrice
