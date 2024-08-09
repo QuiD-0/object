@@ -6,6 +6,7 @@ import com.quid.spring.multiplex.cinema.usecase.CinemaPersistUseCase
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -19,5 +20,5 @@ class CinemaController(
     fun findCinema(@PathVariable id: Long) = cinemaFind.findCinemaBy(id)
 
     @PostMapping
-    fun regist(request: CinemaRegistRequest) = cinemaPersist.invoke(request)
+    fun regist(@RequestBody request: CinemaRegistRequest) = cinemaPersist.invoke(request)
 }

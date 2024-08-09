@@ -13,7 +13,7 @@ class CinemaEntity(
     val name: String,
     @Column(name = "LOCATION")
     val location: String,
-    @JoinColumn(name = "CINEMA_ID")
+    @JoinColumn(name = "CINEMA_ID", nullable = false, updatable = false)
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     val theaters: List<TheaterEntity>,
     @JoinColumn(name = "BOX_OFFICE_ID")
