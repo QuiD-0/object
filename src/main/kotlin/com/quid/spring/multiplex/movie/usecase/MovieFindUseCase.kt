@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service
 class MovieFindUseCase(
     private val movieRepository: MovieRepository
 ) {
-    val log = LoggerFactory.getLogger(this::class.java)!!
-
     fun findBy(id: Long) = movieRepository.findBy(id)
 
     fun findAllBy(director: String) = movieRepository.findAllBy(director)
