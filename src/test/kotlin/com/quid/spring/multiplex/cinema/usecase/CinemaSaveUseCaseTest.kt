@@ -1,8 +1,9 @@
 package com.quid.spring.multiplex.cinema.usecase
 
 import com.quid.spring.multiplex.cinema.domain.Cinema
+import com.quid.spring.multiplex.cinema.domain.CinemaReadRepository
 import com.quid.spring.multiplex.cinema.domain.CinemaWriteRepository
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.BDDMockito.anyString
@@ -11,16 +12,17 @@ import org.mockito.Mockito.mock
 
 class CinemaSaveUseCaseTest {
 
-    private val find: CinemaFindUseCase = mock()
-    private val repository: CinemaWriteRepository = mock()
+    private val mock = mock(CinemaReadRepository::class.java)
+    private val find = CinemaFindUseCase(mock)
+    private val repository = mock<CinemaWriteRepository>()
     private val useCase = CinemaSaveUseCase(find, repository)
 
     @Test
     fun saveCinema() {
         val cinema = mock<Cinema>()
-        repository.apply {
-            given(save(cinema)).willReturn(1)
-        }
+
+        given(cinema.name).willReturn("cinema")
+        given(repository.save(cinema)).willReturn(1)
 
         val result = useCase.invoke(cinema)
 
@@ -30,9 +32,9 @@ class CinemaSaveUseCaseTest {
     @Test
     fun saveCinemaWithException() {
         val cinema = mock<Cinema>()
-        find.apply {
-            given(checkDuplicateName(anyString())).willThrow(IllegalArgumentException())
-        }
+
+        given(cinema.name).willReturn("cinema")
+        given(mock.existsBy(anyString())).willReturn(true)
 
         assertThrows<IllegalArgumentException> { useCase.invoke(cinema) }
     }
