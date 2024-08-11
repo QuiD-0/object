@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.quid.object.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.quid.object.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/object.main.iml" filepath="$PROJECT_DIR$/.idea/modules/object.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/object.test.iml" filepath="$PROJECT_DIR$/.idea/modules/object.test.iml" />
     </modules>
   </component>
 </project>
