@@ -10,4 +10,10 @@ data class Cinema(
     fun assignSchedule(schedule: MovieSchedule): Cinema {
         return this.copy(boxOffice = boxOffice.addSchedule(schedule))
     }
+
+    fun checkRegistered() {
+        if (id == null) {
+            throw IllegalStateException("Cinema is not registered")
+        }
+    }
 }

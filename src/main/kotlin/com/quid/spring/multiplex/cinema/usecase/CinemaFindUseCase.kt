@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class CinemaFindUseCase(
-    private val cinema: CinemaReadRepository,
+    private val repository: CinemaReadRepository,
 ) {
-    fun findCinemaBy(id: Long) = cinema.findBy(id)
+    fun findCinemaBy(id: Long) = repository.findBy(id)
 
     fun checkDuplicateName(name: String) {
-        takeIf { cinema.existsBy(name) }
+        takeIf { repository.existsBy(name) }
             ?.let { throw IllegalArgumentException("Cinema already exists with name: $name") }
     }
 }

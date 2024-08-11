@@ -6,13 +6,14 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class CinemaMergeUseCase(
+class CinemaUpdateUseCase(
     private val repository: CinemaWriteRepository,
 ) {
     private val log = LoggerFactory.getLogger(this::class.java)!!
 
-    fun invoke(domain: Cinema): Long {
-        log.info("MERGE CINEMA : $domain")
-        return repository.save(domain)
+    fun invoke(cinema: Cinema): Long {
+        cinema.checkRegistered()
+        log.info("MERGE CINEMA : $cinema")
+        return repository.save(cinema)
     }
 }

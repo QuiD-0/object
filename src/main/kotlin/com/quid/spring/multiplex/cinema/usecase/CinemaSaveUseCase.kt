@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service
 
 @Service
 class CinemaSaveUseCase(
-    private val cinema: CinemaFindUseCase,
+    private val cinemaFind: CinemaFindUseCase,
     private val repository: CinemaWriteRepository,
 ) {
     val log = LoggerFactory.getLogger(this::class.java)!!
 
-    fun invoke(domain: Cinema): Long {
-        log.info("CHECK DUPLICATE CINEMA NAME : ${domain.name}")
-        cinema.checkDuplicateName(domain.name)
-        log.info("SAVE CINEMA : $domain")
-        return repository.save(domain)
+    fun invoke(cinema: Cinema): Long {
+        log.info("CHECK DUPLICATE CINEMA NAME : ${cinema.name}")
+        cinemaFind.checkDuplicateName(cinema.name)
+        log.info("SAVE CINEMA : $cinema")
+        return repository.save(cinema)
     }
 }
