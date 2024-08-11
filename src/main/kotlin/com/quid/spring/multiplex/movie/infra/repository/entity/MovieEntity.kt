@@ -13,7 +13,7 @@ class MovieEntity(
     @Column(name = "TITLE")
     val title: String,
     @Column(name = "DURATION")
-    val duration: Int,
+    val duration: Long,
     @Column(name = "GENRE")
     val genre: String,
     @Column(name = "RATING")

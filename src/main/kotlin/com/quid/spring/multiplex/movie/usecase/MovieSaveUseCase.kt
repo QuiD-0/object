@@ -13,6 +13,8 @@ class MovieSaveUseCase(
 
     fun invoke(movie: Movie): Long {
         log.info("SAVE MOVIE : $movie")
-        return movieRepository.save(movie)
+        val save = movieRepository.save(movie)
+
+        return save.id!!
     }
 }

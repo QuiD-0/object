@@ -7,4 +7,7 @@ data class Cinema(
     val theaters: List<Theater>,
     val boxOffice: BoxOffice
 ) {
+    fun assignSchedule(schedule: MovieSchedule): Cinema {
+        return this.copy(boxOffice = boxOffice.addSchedule(schedule))
+    }
 }

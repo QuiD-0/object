@@ -4,7 +4,7 @@ import com.quid.spring.multiplex.movie.domain.Movie
 
 data class MovieRegistRequest(
     val title: String,
-    val duration: Int,
+    val duration: Long,
     val genre: String,
     val rating: String,
     val director: String,

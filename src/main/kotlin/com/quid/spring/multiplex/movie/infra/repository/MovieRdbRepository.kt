@@ -14,22 +14,26 @@ class MovieRdbRepository(
 ) : MovieRepository {
 
     @Transactional
-    override fun save(movie: Movie): Long {
-        val entity = movieJpaRepository.save(toEntity(movie))
-        return entity.id!!
+    override fun save(movie: Movie): Movie {
+        return movieJpaRepository.save(toEntity(movie))
+            .run { toDomain(this) }
     }
 
     @Transactional(readOnly = true)
-    override fun findBy(id: Long): Movie {
+    override fun findBy(id: Long): Movie? {
         return movieJpaRepository.findByIdOrNull(id)
             ?.let { toDomain(it) }
-            ?: throw IllegalArgumentException("Movie not found for id: $id")
     }
 
     @Transactional(readOnly = true)
     override fun findAllBy(director: String): List<Movie> {
         return movieJpaRepository.findAllByDirector(director)
             .map { toDomain(it) }
+    }
+
+    @Transactional(readOnly = true)
+    override fun existsBy(movieId: Long): Boolean {
+        return movieJpaRepository.existsById(movieId)
     }
 
 }
