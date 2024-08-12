@@ -13,7 +13,6 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
-        default_batch_fetch_size: 100
   datasource:
     url: jdbc:mysql://localhost:3306/cinema
     username: test
