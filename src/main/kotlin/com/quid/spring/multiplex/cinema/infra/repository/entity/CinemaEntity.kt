@@ -19,6 +19,5 @@ class CinemaEntity(
     @JoinColumn(name = "BOX_OFFICE_ID")
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     val boxOffice: BoxOfficeEntity
-) {
-}
+)
 

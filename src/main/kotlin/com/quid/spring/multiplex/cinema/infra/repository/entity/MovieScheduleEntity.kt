@@ -16,5 +16,4 @@ class MovieScheduleEntity(
     val startTime: LocalDateTime,
     @Column(name = "END_TIME")
     val endTime: LocalDateTime
-) {
-}
+)

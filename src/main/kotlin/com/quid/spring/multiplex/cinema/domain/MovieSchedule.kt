@@ -7,5 +7,4 @@ data class MovieSchedule(
     val movieId: Long,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime
-) {
-}
+)

@@ -25,6 +25,5 @@ class MovieEntity(
     val actors: List<String>,
     @Column(name = "PLOT")
     val plot: String
-) {
-}
+)
 

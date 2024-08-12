@@ -15,5 +15,4 @@ class BoxOfficeEntity(
     @JoinColumn(name = "BOX_OFFICE_ID")
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     val movieSchedule: List<MovieScheduleEntity>,
-) {
-}
+)

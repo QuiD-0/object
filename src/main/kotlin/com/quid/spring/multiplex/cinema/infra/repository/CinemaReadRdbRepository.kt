@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(readOnly = true)
 class CinemaReadRdbRepository(
     private val cinemaJpaRepository: CinemaJpaRepository
-): CinemaReadRepository {
+) : CinemaReadRepository {
 
     override fun findBy(id: Long): Cinema {
         return cinemaJpaRepository.findByIdOrNull(id)

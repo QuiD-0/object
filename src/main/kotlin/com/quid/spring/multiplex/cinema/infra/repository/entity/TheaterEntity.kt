@@ -15,5 +15,4 @@ class TheaterEntity(
     val location: String,
     @Column(name = "CAPACITY")
     val capacity: Int
-) {
-}
+)

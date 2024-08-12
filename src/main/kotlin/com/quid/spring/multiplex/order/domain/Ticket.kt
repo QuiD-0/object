@@ -7,5 +7,4 @@ data class Ticket(
     val seat: String,
     val startTime: String,
     val endTime: String,
-) {
-}
+)

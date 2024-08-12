@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/movie")
-class MovieController (
+class MovieController(
     private val movieFind: MovieFindUseCase,
     private val movieSave: MovieSaveUseCase
 ) {

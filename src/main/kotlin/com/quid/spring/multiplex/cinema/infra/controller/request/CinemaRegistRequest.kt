@@ -40,7 +40,7 @@ data class TheaterRegistRequest(
 data class BoxOfficeRegistRequest(
     val ticketPrice: BigDecimal,
 ) {
-    fun toBoxOffice (): BoxOffice {
+    fun toBoxOffice(): BoxOffice {
         return BoxOffice(
             id = null,
             ticketPrice = ticketPrice

@@ -8,6 +8,5 @@ data class Order(
     val status: OrderStatus,
     val createdAt: Long,
     val updatedAt: Long
-) {
-}
+)
 
