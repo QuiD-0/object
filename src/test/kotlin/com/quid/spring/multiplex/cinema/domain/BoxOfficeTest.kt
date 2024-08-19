@@ -16,7 +16,7 @@ class BoxOfficeTest{
     @Test
     fun addSchedule() {
         val boxOffice = BoxOffice(1, BigDecimal(1000))
-        val schedule = MovieSchedule(1, 1, LocalDateTime.now(), LocalDateTime.now().plusHours(2))
+        val schedule = MovieSchedule(1, 1, 1, 1, LocalDateTime.now(), LocalDateTime.now().plusHours(2))
 
         val result = boxOffice.addSchedule(schedule)
 

@@ -9,18 +9,21 @@ import java.time.LocalTime
 data class AssignScheduleRequest(
     val cinemaId: Long,
     val movieId: Long,
+    val theaterId: Long,
     val startDate: LocalDate,
     val startTime: LocalTime
 ) {
     private val startDateTime: LocalDateTime
         get() = LocalDateTime.of(startDate, startTime)
 
-    fun toSchedule(duration: Long): MovieSchedule {
+    fun toSchedule(duration: Long, capacity: Int): MovieSchedule {
         return MovieSchedule(
             id = null,
             movieId = movieId,
+            theaterId = theaterId,
+            capacity = capacity,
             startTime = startDateTime,
-            endTime = startDateTime.plus(Duration.ofMinutes(duration))
+            endTime = startDateTime.plus(Duration.ofMinutes(duration)),
         )
     }
 }

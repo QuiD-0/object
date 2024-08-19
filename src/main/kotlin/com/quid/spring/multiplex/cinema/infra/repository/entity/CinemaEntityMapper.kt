@@ -24,6 +24,8 @@ fun toCinema(cinemaEntity: CinemaEntity): Cinema = Cinema(
 fun toMovieSchedule(movieScheduleEntity: MovieScheduleEntity): MovieSchedule = MovieSchedule(
     id = movieScheduleEntity.id,
     movieId = movieScheduleEntity.movieId,
+    theaterId = movieScheduleEntity.theaterId,
+    capacity = movieScheduleEntity.capacity,
     startTime = movieScheduleEntity.startTime,
     endTime = movieScheduleEntity.endTime
 )
@@ -67,6 +69,8 @@ fun toEntity(movieSchedule: MovieSchedule): MovieScheduleEntity {
     return MovieScheduleEntity(
         id = movieSchedule.id,
         movieId = movieSchedule.movieId,
+        theaterId = movieSchedule.theaterId,
+        capacity = movieSchedule.capacity,
         startTime = movieSchedule.startTime,
         endTime = movieSchedule.endTime
     )

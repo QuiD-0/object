@@ -16,4 +16,9 @@ data class Cinema(
             throw IllegalStateException("Cinema is not registered")
         }
     }
+
+    fun getCapacity(theaterId: Long): Int {
+        return theaters.find { it.id == theaterId }?.capacity
+            ?: throw IllegalArgumentException("Theater not found")
+    }
 }

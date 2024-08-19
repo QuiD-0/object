@@ -12,6 +12,10 @@ class MovieScheduleEntity(
     val id: Long?,
     @Column(name = "MOVIE_ID")
     val movieId: Long,
+    @Column(name = "THEATER_ID")
+    val theaterId: Long,
+    @Column(name = "CAPACITY")
+    val capacity: Int,
     @Column(name = "START_TIME")
     val startTime: LocalDateTime,
     @Column(name = "END_TIME")

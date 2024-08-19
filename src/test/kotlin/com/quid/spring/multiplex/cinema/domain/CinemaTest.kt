@@ -21,7 +21,7 @@ class CinemaTest{
         val theater = Theater(1, "Theater 1", "1F-1", 100)
         val boxOffice = BoxOffice(1, BigDecimal(1000))
         val cinema = Cinema(1, "Cinema 1", "Address 1", listOf(theater), boxOffice)
-        val schedule = MovieSchedule(1, 1, LocalDateTime.now(), LocalDateTime.now().plusHours(2))
+        val schedule = MovieSchedule(1, 1, 1, 1, LocalDateTime.now(), LocalDateTime.now().plusHours(2))
 
         val result = cinema.assignSchedule(schedule)
 
