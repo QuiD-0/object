@@ -1,6 +1,7 @@
 package com.quid.spring.multiplex.cinema.domain
 
 interface CinemaReadRepository {
-    fun findBy(id: Long): Cinema
-    fun existsBy(name: String): Boolean
+    fun findById(id: Long): Cinema
+    fun existsByName(name: String): Boolean
+    fun findBySchedule(movieScheduleId: Long): Cinema
 }

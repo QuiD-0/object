@@ -14,13 +14,13 @@ class CinemaFindUseCaseTest{
     private val useCase = CinemaFindUseCase(repository)
 
     @Test
-    fun findCinemaBy(){
+    fun findBy(){
         val cinema = mock<Cinema>()
         repository.apply {
-            given(findBy(1)).willReturn(cinema)
+            given(findById(1)).willReturn(cinema)
         }
 
-        val result = useCase.findCinemaBy(1)
+        val result = useCase.findBy(1)
 
         assertEquals(cinema, result)
     }
@@ -28,7 +28,7 @@ class CinemaFindUseCaseTest{
     @Test
     fun checkDuplicateName(){
         repository.apply {
-            given(existsBy("Cinema")).willReturn(true)
+            given(existsByName("Cinema")).willReturn(true)
         }
 
         assertThrows<IllegalArgumentException> { useCase.checkDuplicateName("Cinema") }

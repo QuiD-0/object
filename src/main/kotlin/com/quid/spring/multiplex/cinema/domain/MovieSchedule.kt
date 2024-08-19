@@ -5,6 +5,8 @@ import java.time.LocalDateTime
 data class MovieSchedule(
     val id: Long?,
     val movieId: Long,
+    val theaterId: Long,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime
-)
+) {
+}

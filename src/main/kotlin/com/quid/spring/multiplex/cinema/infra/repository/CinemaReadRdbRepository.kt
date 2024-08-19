@@ -13,13 +13,19 @@ class CinemaReadRdbRepository(
     private val cinemaJpaRepository: CinemaJpaRepository
 ) : CinemaReadRepository {
 
-    override fun findBy(id: Long): Cinema {
+    override fun findById(id: Long): Cinema {
         return cinemaJpaRepository.findByIdOrNull(id)
             ?.let { toCinema(it) }
             ?: throw IllegalArgumentException("Cinema not found with id: $id")
     }
 
-    override fun existsBy(name: String): Boolean {
+    override fun existsByName(name: String): Boolean {
         return cinemaJpaRepository.existsByName(name)
+    }
+
+    override fun findBySchedule(movieScheduleId: Long): Cinema {
+        return cinemaJpaRepository.findByBoxOffice_MovieScheduleId(movieScheduleId)
+            ?.let { toCinema(it) }
+            ?: throw IllegalArgumentException("Cinema not found with movie schedule id: $movieScheduleId")
     }
 }

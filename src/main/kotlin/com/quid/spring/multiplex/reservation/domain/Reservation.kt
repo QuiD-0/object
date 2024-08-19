@@ -6,7 +6,6 @@ data class Reservation (
     val scheduleId: Long,
     val amount : Long,
     val totalPrice: Long,
-    val couponId: Long?,
     val status: OrderStatus,
     val createdAt: Long,
     val updatedAt: Long

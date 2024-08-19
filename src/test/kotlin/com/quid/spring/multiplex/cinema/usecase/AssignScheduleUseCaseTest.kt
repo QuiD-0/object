@@ -29,7 +29,7 @@ class AssignScheduleUseCaseTest {
             given(assignSchedule(schedule)).willReturn(this)
         }
 
-        given(cinemaFind.findCinemaBy(anyLong())).willReturn(cinema)
+        given(cinemaFind.findBy(anyLong())).willReturn(cinema)
         given(movieFind.findBy(anyLong())).willReturn(movie)
         given(cinemaMerge.invoke(cinema)).willReturn(1)
 

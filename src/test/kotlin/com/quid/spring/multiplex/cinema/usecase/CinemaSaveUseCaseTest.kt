@@ -34,7 +34,7 @@ class CinemaSaveUseCaseTest {
         val cinema = mock<Cinema>()
 
         given(cinema.name).willReturn("cinema")
-        given(mock.existsBy(anyString())).willReturn(true)
+        given(mock.existsByName(anyString())).willReturn(true)
 
         assertThrows<IllegalArgumentException> { useCase.invoke(cinema) }
     }

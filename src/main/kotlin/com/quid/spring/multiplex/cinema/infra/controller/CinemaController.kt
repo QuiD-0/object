@@ -15,7 +15,7 @@ class CinemaController(
     private val assignSchedule: AssignScheduleUseCase
 ) {
     @GetMapping("/{id}")
-    fun findCinema(@PathVariable id: Long) = cinemaFind.findCinemaBy(id)
+    fun findCinema(@PathVariable id: Long) = cinemaFind.findBy(id)
 
     @PostMapping
     fun regist(@RequestBody request: CinemaRegistRequest) = cinemaSave.invoke(request.toCinema())

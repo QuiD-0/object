@@ -10,4 +10,9 @@ data class BoxOffice(
     fun addSchedule(schedule: MovieSchedule): BoxOffice {
         return this.copy(movieSchedule = movieSchedule + schedule)
     }
+
+    fun findTheaterId(movieScheduleId: Long): Long {
+        return movieSchedule.find { it.id == movieScheduleId }?.theaterId
+            ?: throw IllegalArgumentException("Movie schedule not found")
+    }
 }
