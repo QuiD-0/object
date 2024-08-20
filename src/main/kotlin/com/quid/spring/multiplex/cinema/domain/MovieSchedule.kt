@@ -10,4 +10,12 @@ data class MovieSchedule(
     val startTime: LocalDateTime,
     val endTime: LocalDateTime
 ) {
+    init {
+        require(capacity > 0) { "Capacity must be greater than 0" }
+    }
+
+    fun reserve(count: Int): MovieSchedule {
+        require(startTime.isAfter(LocalDateTime.now())) { "Cannot reserve for past schedule" }
+        return this.copy(capacity = capacity - count)
+    }
 }

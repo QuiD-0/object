@@ -1,5 +1,7 @@
 package com.quid.spring.multiplex.cinema.domain
 
+import java.math.BigDecimal
+
 data class Cinema(
     val id: Long?,
     val name: String,
@@ -20,5 +22,13 @@ data class Cinema(
     fun getCapacity(theaterId: Long): Int {
         return theaters.find { it.id == theaterId }?.capacity
             ?: throw IllegalArgumentException("Theater not found")
+    }
+
+    fun getTotalTicketPrice(count: Int): BigDecimal {
+        return boxOffice.ticketPrice.multiply(BigDecimal(count))
+    }
+
+    fun reserve(movieScheduleId: Long, count: Int): Cinema {
+        return this.copy(boxOffice = boxOffice.reserve(movieScheduleId, count))
     }
 }

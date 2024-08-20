@@ -1,0 +1,25 @@
+package com.quid.spring.multiplex.reservation.infra.repository.entity
+
+import com.quid.spring.multiplex.reservation.domain.Reservation
+
+fun toEntity(reservation: Reservation) : ReservationEntity = ReservationEntity(
+    id = reservation.id,
+    userId = reservation.userId,
+    scheduleId = reservation.scheduleId,
+    count = reservation.count,
+    totalPrice = reservation.totalPrice,
+    status = reservation.status,
+    createdAt = reservation.createdAt,
+    updatedAt = reservation.updatedAt
+)
+
+fun toDomain(reservationEntity: ReservationEntity) : Reservation = Reservation(
+    id = reservationEntity.id,
+    userId = reservationEntity.userId,
+    scheduleId = reservationEntity.scheduleId,
+    count = reservationEntity.count,
+    totalPrice = reservationEntity.totalPrice,
+    status = reservationEntity.status,
+    createdAt = reservationEntity.createdAt,
+    updatedAt = reservationEntity.updatedAt
+)
