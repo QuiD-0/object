@@ -17,7 +17,7 @@ class ReserveUseCase(
     private val reserveRepository: ReserveWriteRepository,
     private val transactionTemplate: TransactionTemplate
 ) {
-    fun invoke(request: MovieReserveRequest): Ticket {
+    fun invoke(request: MovieReserveRequest): Long {
         val cinema = cinemaFind.findBySchedule(request.movieScheduleId)
 
         val reservation = init(request)
@@ -38,6 +38,6 @@ class ReserveUseCase(
             reserveRepository.save(cancel)
         }
 
-        return null as Ticket
+        return reservation.id!!
     }
 }
