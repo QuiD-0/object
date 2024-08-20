@@ -23,11 +23,11 @@ class ReserveUseCase(
         val reservation = init(request)
         reserveRepository.save(reservation)
 
-        try {
-            val totalAmount = cinema.getTotalTicketPrice(request.count)
+        val totalAmount = cinema.getTotalTicketPrice(request.count)
+        val confirm = reservation.confirm(totalAmount)
 
+        try {
             val updatedCinema = cinema.reserve(request.movieScheduleId, request.count)
-            val confirm = reservation.confirm(totalAmount)
 
             transactionTemplate.execute({
                 cinemaMerge.invoke(updatedCinema)
