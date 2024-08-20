@@ -16,6 +16,6 @@ class CinemaSaveUseCase(
         log.info("CHECK DUPLICATE CINEMA NAME : ${cinema.name}")
         cinemaFind.checkDuplicateName(cinema.name)
         log.info("SAVE CINEMA : $cinema")
-        return repository.save(cinema)
+        return repository.save(cinema).id!!
     }
 }

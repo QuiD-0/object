@@ -29,7 +29,7 @@ class AssignScheduleUseCaseTest {
         val cinema = mock<Cinema>().apply {
             given(assignSchedule(schedule)).willReturn(this)
         }
-        given(cinemaFind.findBy(anyLong())).willReturn(cinema)
+        given(cinemaFind.findByTheaterId(anyLong())).willReturn(cinema)
         given(movieFind.findBy(anyLong())).willReturn(movie)
         given(cinemaMerge.invoke(any())).willReturn(0)
 

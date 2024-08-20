@@ -17,12 +17,12 @@ class CinemaUpdateUseCaseTest {
     fun updateCinema() {
         val cinema = mock<Cinema>()
         repository.apply {
-            given(save(cinema)).willReturn(1)
+            given(save(cinema)).willReturn(cinema)
         }
 
         val result = useCase.invoke(cinema)
 
-        assertEquals(1, result)
+        assertEquals(0, result)
     }
 
     @Test

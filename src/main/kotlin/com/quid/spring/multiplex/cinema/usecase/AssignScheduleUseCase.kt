@@ -12,7 +12,7 @@ class AssignScheduleUseCase(
 ) {
     fun invoke(request: AssignScheduleRequest): Long {
         val movie = movieFind.findBy(request.movieId)
-        val foundCinema = cinemaFind.findBy(request.cinemaId)
+        val foundCinema = cinemaFind.findByTheaterId(request.theaterId)
         val schedule = request.toSchedule(movie.duration, foundCinema.getCapacity(request.theaterId))
 
         val cinema = foundCinema.assignSchedule(schedule)

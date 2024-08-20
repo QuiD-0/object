@@ -21,8 +21,9 @@ class CinemaSaveUseCaseTest {
     fun saveCinema() {
         val cinema = mock<Cinema>()
 
+        given(cinema.id).willReturn(1)
         given(cinema.name).willReturn("cinema")
-        given(repository.save(cinema)).willReturn(1)
+        given(repository.save(cinema)).willReturn(cinema)
 
         val result = useCase.invoke(cinema)
 

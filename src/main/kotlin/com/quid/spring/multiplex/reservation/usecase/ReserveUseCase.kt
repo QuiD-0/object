@@ -21,7 +21,7 @@ class ReserveUseCase(
         val cinema = cinemaFind.findBySchedule(request.movieScheduleId)
 
         val reservation = init(request)
-        reserveRepository.save(reservation)
+            .let { reserveRepository.save(it) }
 
         val totalAmount = cinema.getTotalTicketPrice(request.count)
         val confirm = reservation.confirm(totalAmount)
@@ -33,7 +33,7 @@ class ReserveUseCase(
                 cinemaMerge.invoke(updatedCinema)
                 reserveRepository.save(confirm)
             })
-        } catch (e: TransactionException) {
+        } catch (e: Exception) {
             val cancel = reservation.cancel()
             reserveRepository.save(cancel)
         }

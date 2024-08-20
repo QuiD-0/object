@@ -21,6 +21,7 @@ class ReservationEntity(
     @Column(name = "TOTAL_PRICE")
     val totalPrice: BigDecimal,
     @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
     val status: OrderStatus,
     @Column(name = "CREATED_AT")
     val createdAt: LocalDateTime,

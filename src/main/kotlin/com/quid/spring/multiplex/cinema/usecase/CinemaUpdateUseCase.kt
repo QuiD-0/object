@@ -14,6 +14,6 @@ class CinemaUpdateUseCase(
     fun invoke(cinema: Cinema): Long {
         cinema.checkRegistered()
         log.info("MERGE CINEMA : $cinema")
-        return repository.save(cinema)
+        return repository.save(cinema).id!!
     }
 }

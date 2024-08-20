@@ -16,4 +16,5 @@ class CinemaFindUseCase(
     }
 
     fun findBySchedule(movieScheduleId: Long): Cinema = repository.findBySchedule(movieScheduleId)
+    fun findByTheaterId(theaterId: Long): Cinema = repository.findByTheaterId(theaterId)
 }

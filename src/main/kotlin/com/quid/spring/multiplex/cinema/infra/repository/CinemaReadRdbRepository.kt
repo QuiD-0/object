@@ -28,4 +28,10 @@ class CinemaReadRdbRepository(
             ?.let { toCinema(it) }
             ?: throw IllegalArgumentException("Cinema not found with movie schedule id: $movieScheduleId")
     }
+
+    override fun findByTheaterId(theaterId: Long): Cinema {
+        return cinemaJpaRepository.findByTheatersId(theaterId)
+            ?.let { toCinema(it) }
+            ?: throw IllegalArgumentException("Cinema not found with theater id: $theaterId")
+    }
 }

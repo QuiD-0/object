@@ -7,7 +7,6 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 
 data class AssignScheduleRequest(
-    val cinemaId: Long,
     val movieId: Long,
     val theaterId: Long,
     val startDate: LocalDate,
