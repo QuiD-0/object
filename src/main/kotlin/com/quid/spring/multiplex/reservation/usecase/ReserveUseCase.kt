@@ -3,11 +3,9 @@ package com.quid.spring.multiplex.reservation.usecase
 import com.quid.spring.multiplex.cinema.usecase.CinemaFindUseCase
 import com.quid.spring.multiplex.cinema.usecase.CinemaUpdateUseCase
 import com.quid.spring.multiplex.reservation.domain.ReserveWriteRepository
-import com.quid.spring.multiplex.reservation.domain.Ticket
 import com.quid.spring.multiplex.reservation.domain.init
 import com.quid.spring.multiplex.reservation.infra.controller.request.MovieReserveRequest
 import org.springframework.stereotype.Service
-import org.springframework.transaction.TransactionException
 import org.springframework.transaction.support.TransactionTemplate
 
 @Service
@@ -36,6 +34,7 @@ class ReserveUseCase(
         } catch (e: Exception) {
             val cancel = reservation.cancel()
             reserveRepository.save(cancel)
+            throw e
         }
 
         return reservation.id!!
