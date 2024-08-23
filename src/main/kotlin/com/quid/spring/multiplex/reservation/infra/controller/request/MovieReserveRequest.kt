@@ -4,5 +4,4 @@ data class MovieReserveRequest(
     val userId: Long,
     val movieScheduleId: Long,
     val count: Int,
-) {
-}
+)

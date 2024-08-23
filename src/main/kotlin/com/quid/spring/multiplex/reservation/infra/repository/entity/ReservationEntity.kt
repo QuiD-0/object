@@ -17,7 +17,7 @@ class ReservationEntity(
     @Column(name = "SCHEDULE_ID")
     val scheduleId: Long,
     @Column(name = "COUNT")
-    val count : Int,
+    val count: Int,
     @Column(name = "TOTAL_PRICE")
     val totalPrice: BigDecimal,
     @Column(name = "STATUS")
@@ -27,5 +27,4 @@ class ReservationEntity(
     val createdAt: LocalDateTime,
     @Column(name = "UPDATED_AT")
     val updatedAt: LocalDateTime
-) {
-}
+)

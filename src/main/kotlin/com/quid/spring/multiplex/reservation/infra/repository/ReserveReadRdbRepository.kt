@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository
 class ReserveReadRdbRepository(
     private val reserveJpaRepository: ReserveJpaRepository
-): ReserveReadRepository {
+) : ReserveReadRepository {
     override fun findBy(reservationId: Long): Reservation {
         return reserveJpaRepository.findByIdOrNull(reservationId)
             ?.let { toReservation(it) }
