@@ -31,4 +31,8 @@ data class Cinema(
     fun reserve(movieScheduleId: Long, count: Int): Cinema {
         return this.copy(boxOffice = boxOffice.reserve(movieScheduleId, count))
     }
+
+    fun getMovieId(scheduleId: Long): Long {
+        return boxOffice.getMovieId(scheduleId)
+    }
 }

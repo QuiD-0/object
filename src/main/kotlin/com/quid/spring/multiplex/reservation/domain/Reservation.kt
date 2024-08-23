@@ -1,5 +1,6 @@
 package com.quid.spring.multiplex.reservation.domain
 
+import com.quid.spring.multiplex.reservation.domain.OrderStatus.*
 import com.quid.spring.multiplex.reservation.infra.controller.request.MovieReserveRequest
 import java.math.BigDecimal
 import java.time.LocalDateTime
@@ -11,17 +12,18 @@ data class Reservation(
     val count: Int,
     val totalPrice: BigDecimal,
     val status: OrderStatus,
+    val ticketIssued: Boolean = false,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime
 ) {
     fun confirm(totalAmount: BigDecimal) = this.copy(
         totalPrice = totalAmount,
-        status = OrderStatus.CONFIRMED,
+        status = CONFIRMED,
         updatedAt = LocalDateTime.now()
     )
 
     fun cancel(): Reservation = this.copy(
-        status = OrderStatus.CANCELED,
+        status = CANCELED,
         updatedAt = LocalDateTime.now()
     )
 }
@@ -31,7 +33,7 @@ fun init(request: MovieReserveRequest) = Reservation(
     scheduleId = request.movieScheduleId,
     count = request.count,
     totalPrice = BigDecimal.ZERO,
-    status = OrderStatus.PENDING,
+    status = PENDING,
     createdAt = LocalDateTime.now(),
     updatedAt = LocalDateTime.now()
 )
