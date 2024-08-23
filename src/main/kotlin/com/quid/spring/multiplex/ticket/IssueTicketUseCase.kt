@@ -10,6 +10,5 @@ class IssueTicketUseCase(
     ) {
     fun invoke(reservationId: Long) {
         val reservation = reserveFind.findBy(reservationId)
-            .also { it.validateIssueTicket() }
     }
 }
