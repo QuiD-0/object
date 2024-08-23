@@ -9,6 +9,7 @@ fun toEntity(reservation: Reservation): ReservationEntity = ReservationEntity(
     count = reservation.count,
     totalPrice = reservation.totalPrice,
     status = reservation.status,
+    ticketIssued = reservation.ticketIssued,
     createdAt = reservation.createdAt,
     updatedAt = reservation.updatedAt
 )
@@ -20,6 +21,7 @@ fun toReservation(reservationEntity: ReservationEntity): Reservation = Reservati
     count = reservationEntity.count,
     totalPrice = reservationEntity.totalPrice,
     status = reservationEntity.status,
+    ticketIssued = reservationEntity.ticketIssued,
     createdAt = reservationEntity.createdAt,
     updatedAt = reservationEntity.updatedAt
 )

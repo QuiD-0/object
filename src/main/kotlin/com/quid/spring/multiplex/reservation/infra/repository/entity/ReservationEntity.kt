@@ -23,6 +23,8 @@ class ReservationEntity(
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     val status: OrderStatus,
+    @Column(name = "TICKET_ISSUED")
+    val ticketIssued: Boolean,
     @Column(name = "CREATED_AT")
     val createdAt: LocalDateTime,
     @Column(name = "UPDATED_AT")

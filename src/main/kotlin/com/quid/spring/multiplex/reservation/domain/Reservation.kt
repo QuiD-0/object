@@ -12,7 +12,7 @@ data class Reservation(
     val count: Int,
     val totalPrice: BigDecimal,
     val status: OrderStatus,
-    val ticketIssued: Boolean = false,
+    val ticketIssued: Boolean,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime
 ) {
@@ -34,6 +34,7 @@ fun init(request: MovieReserveRequest) = Reservation(
     count = request.count,
     totalPrice = BigDecimal.ZERO,
     status = PENDING,
+    ticketIssued = false,
     createdAt = LocalDateTime.now(),
     updatedAt = LocalDateTime.now()
 )
