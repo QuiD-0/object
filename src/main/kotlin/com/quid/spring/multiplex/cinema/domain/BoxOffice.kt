@@ -1,5 +1,6 @@
 package com.quid.spring.multiplex.cinema.domain
 
+import com.quid.spring.multiplex.movie.domain.Movie
 import java.math.BigDecimal
 
 data class BoxOffice(
@@ -21,5 +22,17 @@ data class BoxOffice(
         }
 
         return this.copy(movieSchedule = updatedSchedules)
+    }
+
+    fun getTheaterIdBySchedule(scheduleId: Long): Long {
+        return movieSchedule.find { it.id == scheduleId }
+            ?.theaterId
+            ?: throw IllegalArgumentException("Schedule not found")
+    }
+
+    fun findMovieIdBySchedule(scheduleId: Long): Long {
+        return movieSchedule.find { it.id == scheduleId }
+            ?.movieId
+            ?: throw IllegalArgumentException("Schedule not found")
     }
 }

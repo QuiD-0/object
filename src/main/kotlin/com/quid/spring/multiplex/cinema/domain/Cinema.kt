@@ -31,4 +31,14 @@ data class Cinema(
     fun reserve(movieScheduleId: Long, count: Int): Cinema {
         return this.copy(boxOffice = boxOffice.reserve(movieScheduleId, count))
     }
+
+    fun findMovieScheduleBy(scheduleId: Long): MovieSchedule {
+        return boxOffice.movieSchedule.find { it.id == scheduleId }
+            ?: throw IllegalArgumentException("Schedule not found")
+    }
+
+    fun findTheaterBy(theaterId: Long): Theater {
+        return theaters.find { it.id == theaterId }
+            ?: throw IllegalArgumentException("Theater not found")
+    }
 }
