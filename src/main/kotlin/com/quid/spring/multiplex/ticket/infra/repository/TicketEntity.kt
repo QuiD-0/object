@@ -25,5 +25,4 @@ class TicketEntity(
     val endTime: LocalDateTime,
     @Column(name = "PRICE")
     val price: BigDecimal,
-) {
-}
+)

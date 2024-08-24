@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
 class TicketWriteRdbRepository(
     private val ticketJpaRepository: JpaRepository<TicketEntity, Long>
 ) : TicketWriteRepository {
-    override fun save(ticket: Ticket) : Ticket {
+    override fun save(ticket: Ticket): Ticket {
         return ticketJpaRepository.save(toEntity(ticket))
             .run { toTicket(this) }
     }

@@ -16,7 +16,12 @@ data class Ticket(
     val price: BigDecimal,
 )
 
-fun issueTicket(reservation: Reservation, movieSchedule: MovieSchedule, movieTitle: String, theaterName: String): Ticket {
+fun issueTicket(
+    reservation: Reservation,
+    movieSchedule: MovieSchedule,
+    movieTitle: String,
+    theaterName: String
+): Ticket {
     return Ticket(
         id = null,
         reservationId = reservation.id!!,
