@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.support.TransactionTemplate
 
 @Service
-class ReserveUseCase(
+class ReserveMovieUseCase(
     private val cinemaFind: CinemaFindUseCase,
     private val cinemaMerge: CinemaUpdateUseCase,
     private val reserveRepository: ReserveWriteRepository,

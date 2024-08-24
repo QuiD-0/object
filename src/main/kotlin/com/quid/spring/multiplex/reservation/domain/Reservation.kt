@@ -26,6 +26,11 @@ data class Reservation(
         status = CANCELED,
         updatedAt = LocalDateTime.now()
     )
+
+    fun issueComplete() = this.copy(
+        ticketIssued = true,
+        updatedAt = LocalDateTime.now()
+    )
 }
 
 fun init(request: MovieReserveRequest) = Reservation(
