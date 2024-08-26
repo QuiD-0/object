@@ -1,5 +1,6 @@
 package movie
 
+import com.quid.movie.domain.Money
 import movie.domain.*
 import movie.usecase.Reservation
 import movie.usecase.discountPolicy.AmountDiscountPolicy

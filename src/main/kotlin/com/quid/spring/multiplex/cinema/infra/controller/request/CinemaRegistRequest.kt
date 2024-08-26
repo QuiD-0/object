@@ -3,6 +3,7 @@ package com.quid.spring.multiplex.cinema.infra.controller.request
 import com.quid.spring.multiplex.cinema.domain.BoxOffice
 import com.quid.spring.multiplex.cinema.domain.Cinema
 import com.quid.spring.multiplex.cinema.domain.Theater
+import com.quid.spring.multiplex.global.vo.Money
 import java.math.BigDecimal
 
 data class CinemaRegistRequest(
@@ -43,7 +44,7 @@ data class BoxOfficeRegistRequest(
     fun toBoxOffice(): BoxOffice {
         return BoxOffice(
             id = null,
-            ticketPrice = ticketPrice
+            ticketPrice = Money(ticketPrice)
         )
     }
 }

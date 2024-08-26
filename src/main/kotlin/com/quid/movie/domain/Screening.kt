@@ -1,5 +1,6 @@
 package movie.domain
 
+import com.quid.movie.domain.Money
 import java.time.LocalDateTime
 
 data class Screening(

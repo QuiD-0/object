@@ -1,5 +1,6 @@
 package com.quid.spring.multiplex.reservation.infra.repository.entity
 
+import com.quid.spring.multiplex.global.vo.Currency
 import com.quid.spring.multiplex.reservation.domain.OrderStatus
 import jakarta.persistence.*
 import java.math.BigDecimal
@@ -20,6 +21,9 @@ class ReservationEntity(
     val count: Int,
     @Column(name = "TOTAL_PRICE")
     val totalPrice: BigDecimal,
+    @Column(name = "CURRENCY")
+    @Enumerated(EnumType.STRING)
+    val currency: Currency,
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     val status: OrderStatus,

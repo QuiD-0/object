@@ -1,27 +1,29 @@
 package com.quid.spring.multiplex.reservation.infra.repository.entity
 
+import com.quid.spring.multiplex.global.vo.Money
 import com.quid.spring.multiplex.reservation.domain.Reservation
 
-fun toEntity(reservation: Reservation): ReservationEntity = ReservationEntity(
-    id = reservation.id,
-    userId = reservation.userId,
-    scheduleId = reservation.scheduleId,
-    count = reservation.count,
-    totalPrice = reservation.totalPrice,
-    status = reservation.status,
-    ticketIssued = reservation.ticketIssued,
-    createdAt = reservation.createdAt,
-    updatedAt = reservation.updatedAt
+fun toEntity(entity: Reservation): ReservationEntity = ReservationEntity(
+    id = entity.id,
+    userId = entity.userId,
+    scheduleId = entity.scheduleId,
+    count = entity.count,
+    totalPrice = entity.totalPrice.amount,
+    currency = entity.totalPrice.currency,
+    status = entity.status,
+    ticketIssued = entity.ticketIssued,
+    createdAt = entity.createdAt,
+    updatedAt = entity.updatedAt
 )
 
-fun toReservation(reservationEntity: ReservationEntity): Reservation = Reservation(
-    id = reservationEntity.id,
-    userId = reservationEntity.userId,
-    scheduleId = reservationEntity.scheduleId,
-    count = reservationEntity.count,
-    totalPrice = reservationEntity.totalPrice,
-    status = reservationEntity.status,
-    ticketIssued = reservationEntity.ticketIssued,
-    createdAt = reservationEntity.createdAt,
-    updatedAt = reservationEntity.updatedAt
+fun toReservation(entity: ReservationEntity): Reservation = Reservation(
+    id = entity.id,
+    userId = entity.userId,
+    scheduleId = entity.scheduleId,
+    count = entity.count,
+    totalPrice = Money(entity.totalPrice, entity.currency),
+    status = entity.status,
+    ticketIssued = entity.ticketIssued,
+    createdAt = entity.createdAt,
+    updatedAt = entity.updatedAt
 )

@@ -1,6 +1,6 @@
 package movie.usecase.payMethod
 
-import movie.domain.Money
+import com.quid.movie.domain.Money
 import movie.domain.PayMethod
 
 data class CreditCard(

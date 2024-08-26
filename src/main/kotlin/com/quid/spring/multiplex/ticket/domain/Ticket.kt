@@ -1,8 +1,8 @@
 package com.quid.spring.multiplex.ticket.domain
 
 import com.quid.spring.multiplex.cinema.domain.MovieSchedule
+import com.quid.spring.multiplex.global.vo.Money
 import com.quid.spring.multiplex.reservation.domain.Reservation
-import java.math.BigDecimal
 import java.time.LocalDateTime
 
 data class Ticket(
@@ -13,7 +13,7 @@ data class Ticket(
     val seat: String,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
-    val price: BigDecimal,
+    val price: Money,
 )
 
 fun issueTicket(

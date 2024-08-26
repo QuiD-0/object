@@ -1,10 +1,10 @@
 package com.quid.spring.multiplex.cinema.domain
 
-import java.math.BigDecimal
+import com.quid.spring.multiplex.global.vo.Money
 
 data class BoxOffice(
     val id: Long?,
-    val ticketPrice: BigDecimal,
+    val ticketPrice: Money,
     val movieSchedule: List<MovieSchedule> = emptyList(),
 ) {
     fun addSchedule(schedule: MovieSchedule): BoxOffice {
@@ -23,7 +23,7 @@ data class BoxOffice(
         return this.copy(movieSchedule = updatedSchedules)
     }
 
-    fun getTotalTicketPrice(count: Int): BigDecimal {
-        return ticketPrice * BigDecimal(count)
+    fun getTotalTicketPrice(count: Int): Money {
+        return ticketPrice * count
     }
 }

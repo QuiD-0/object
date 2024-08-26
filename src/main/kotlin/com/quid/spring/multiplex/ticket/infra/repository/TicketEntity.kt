@@ -1,5 +1,6 @@
 package com.quid.spring.multiplex.ticket.infra.repository
 
+import com.quid.spring.multiplex.global.vo.Currency
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.LocalDateTime
@@ -25,4 +26,7 @@ class TicketEntity(
     val endTime: LocalDateTime,
     @Column(name = "PRICE")
     val price: BigDecimal,
+    @Column(name = "CURRENCY")
+    @Enumerated(EnumType.STRING)
+    val currency: Currency
 )

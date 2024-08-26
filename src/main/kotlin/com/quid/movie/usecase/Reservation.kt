@@ -1,5 +1,6 @@
 package movie.usecase
 
+import com.quid.movie.domain.Money
 import movie.domain.*
 
 data class Reservation(

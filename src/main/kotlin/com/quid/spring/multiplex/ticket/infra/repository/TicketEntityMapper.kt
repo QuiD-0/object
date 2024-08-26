@@ -1,5 +1,6 @@
 package com.quid.spring.multiplex.ticket.infra.repository
 
+import com.quid.spring.multiplex.global.vo.Money
 import com.quid.spring.multiplex.ticket.domain.Ticket
 
 fun toEntity(ticket: Ticket): TicketEntity {
@@ -11,7 +12,8 @@ fun toEntity(ticket: Ticket): TicketEntity {
         seat = ticket.seat,
         startTime = ticket.startTime,
         endTime = ticket.endTime,
-        price = ticket.price
+        price = ticket.price.amount,
+        currency = ticket.price.currency
     )
 }
 
@@ -24,6 +26,6 @@ fun toTicket(ticketEntity: TicketEntity): Ticket {
         seat = ticketEntity.seat,
         startTime = ticketEntity.startTime,
         endTime = ticketEntity.endTime,
-        price = ticketEntity.price
+        price = Money(ticketEntity.price, ticketEntity.currency)
     )
 }

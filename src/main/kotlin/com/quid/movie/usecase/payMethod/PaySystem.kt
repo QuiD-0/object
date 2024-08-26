@@ -1,6 +1,6 @@
 package movie.usecase.payMethod
 
-import movie.domain.Money
+import com.quid.movie.domain.Money
 
 object PaySystem {
     fun pay(cardNumber: String, validThru: String, cvc: String, amount: Money): Money {

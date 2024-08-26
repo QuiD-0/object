@@ -1,4 +1,4 @@
-package movie.domain
+package com.quid.movie.domain
 
 import java.math.BigDecimal
 

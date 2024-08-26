@@ -1,7 +1,5 @@
 package com.quid.spring.multiplex.cinema.domain
 
-import java.math.BigDecimal
-
 data class Cinema(
     val id: Long?,
     val name: String,

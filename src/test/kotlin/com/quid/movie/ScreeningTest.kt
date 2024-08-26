@@ -1,6 +1,6 @@
 package movie
 
-import movie.domain.Money
+import com.quid.movie.domain.Money
 import movie.domain.Movie
 import movie.domain.Screening
 import movie.domain.Seats

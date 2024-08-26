@@ -4,38 +4,39 @@ import com.quid.spring.multiplex.cinema.domain.BoxOffice
 import com.quid.spring.multiplex.cinema.domain.Cinema
 import com.quid.spring.multiplex.cinema.domain.MovieSchedule
 import com.quid.spring.multiplex.cinema.domain.Theater
+import com.quid.spring.multiplex.global.vo.Money
 
 
-fun toBoxOffice(boxOfficeEntity: BoxOfficeEntity): BoxOffice = BoxOffice(
-    id = boxOfficeEntity.id,
-    ticketPrice = boxOfficeEntity.ticketPrice,
-    movieSchedule = boxOfficeEntity.movieSchedule.map { toMovieSchedule(it) }
+fun toBoxOffice(entity: BoxOfficeEntity): BoxOffice = BoxOffice(
+    id = entity.id,
+    ticketPrice = Money(entity.ticketPrice, entity.currency),
+    movieSchedule = entity.movieSchedule.map { toMovieSchedule(it) }
 )
 
-fun toCinema(cinemaEntity: CinemaEntity): Cinema = Cinema(
-    id = cinemaEntity.id,
-    name = cinemaEntity.name,
-    location = cinemaEntity.location,
-    theaters = cinemaEntity.theaters.map { toTheater(it) },
-    boxOffice = toBoxOffice(cinemaEntity.boxOffice)
-)
-
-
-fun toMovieSchedule(movieScheduleEntity: MovieScheduleEntity): MovieSchedule = MovieSchedule(
-    id = movieScheduleEntity.id,
-    movieId = movieScheduleEntity.movieId,
-    theaterId = movieScheduleEntity.theaterId,
-    capacity = movieScheduleEntity.capacity,
-    startTime = movieScheduleEntity.startTime,
-    endTime = movieScheduleEntity.endTime
+fun toCinema(entity: CinemaEntity): Cinema = Cinema(
+    id = entity.id,
+    name = entity.name,
+    location = entity.location,
+    theaters = entity.theaters.map { toTheater(it) },
+    boxOffice = toBoxOffice(entity.boxOffice)
 )
 
 
-fun toTheater(theaterEntity: TheaterEntity): Theater = Theater(
-    id = theaterEntity.id,
-    name = theaterEntity.name,
-    location = theaterEntity.location,
-    capacity = theaterEntity.capacity
+fun toMovieSchedule(entity: MovieScheduleEntity): MovieSchedule = MovieSchedule(
+    id = entity.id,
+    movieId = entity.movieId,
+    theaterId = entity.theaterId,
+    capacity = entity.capacity,
+    startTime = entity.startTime,
+    endTime = entity.endTime
+)
+
+
+fun toTheater(entity: TheaterEntity): Theater = Theater(
+    id = entity.id,
+    name = entity.name,
+    location = entity.location,
+    capacity = entity.capacity
 )
 
 fun toEntity(cinema: Cinema): CinemaEntity {
@@ -60,7 +61,8 @@ fun toEntity(theater: Theater): TheaterEntity {
 fun toEntity(boxOffice: BoxOffice): BoxOfficeEntity {
     return BoxOfficeEntity(
         id = boxOffice.id,
-        ticketPrice = boxOffice.ticketPrice,
+        ticketPrice = boxOffice.ticketPrice.amount,
+        currency = boxOffice.ticketPrice.currency,
         movieSchedule = boxOffice.movieSchedule.map { toEntity(it) }
     )
 }
