@@ -7,4 +7,5 @@ interface CinemaReadRepository {
     fun findByTheaterId(theaterId: Long): Cinema
     fun findMovieScheduleBy(scheduleId: Long): MovieSchedule
     fun findTheaterBy(theaterId: Long): Theater
+    fun findBoxOfficeBySchedule(movieScheduleId: Long): BoxOffice
 }

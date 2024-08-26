@@ -22,4 +22,8 @@ data class BoxOffice(
 
         return this.copy(movieSchedule = updatedSchedules)
     }
+
+    fun getTotalTicketPrice(count: Int): BigDecimal {
+        return ticketPrice * BigDecimal(count)
+    }
 }

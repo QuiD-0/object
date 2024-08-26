@@ -1,4 +1,4 @@
-package com.quid.spring.multiplex.reservation
+package com.quid.spring.multiplex.reservation.usecase
 
 import com.quid.spring.multiplex.reservation.domain.Reservation
 import com.quid.spring.multiplex.reservation.domain.ReserveReadRepository

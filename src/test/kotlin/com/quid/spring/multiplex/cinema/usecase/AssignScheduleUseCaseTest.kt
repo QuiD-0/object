@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.BDDMockito.given
 import org.mockito.Mockito.mock
-import org.mockito.kotlin.any
 
 class AssignScheduleUseCaseTest {
 
@@ -31,7 +30,7 @@ class AssignScheduleUseCaseTest {
         }
         given(cinemaFind.findByTheaterId(anyLong())).willReturn(cinema)
         given(movieFind.findBy(anyLong())).willReturn(movie)
-        given(cinemaMerge.invoke(any())).willReturn(0)
+        given(cinemaMerge.invoke(cinema)).willReturn(0)
 
         val result = useCase.invoke(request)
 

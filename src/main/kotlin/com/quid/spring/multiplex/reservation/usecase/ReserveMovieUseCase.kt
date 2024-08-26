@@ -16,21 +16,21 @@ class ReserveMovieUseCase(
     private val transactionTemplate: TransactionTemplate
 ) {
     fun invoke(request: MovieReserveRequest): Long {
-        val cinema = cinemaFind.findBySchedule(request.movieScheduleId)
+        val boxOffice = cinemaFind.findBoxOfficeBySchedule(request.movieScheduleId)
 
         val reservation = init(request)
             .let { reserveRepository.save(it) }
 
-        val totalAmount = cinema.getTotalTicketPrice(request.count)
+        val totalAmount = boxOffice.getTotalTicketPrice(request.count)
         val confirm = reservation.confirm(totalAmount)
 
         try {
-            val updatedCinema = cinema.reserve(request.movieScheduleId, request.count)
+            val updatedBoxOffice = boxOffice.reserve(request.movieScheduleId, request.count)
 
-            transactionTemplate.execute({
-                cinemaMerge.invoke(updatedCinema)
+            transactionTemplate.execute {
+                cinemaMerge.invoke(updatedBoxOffice)
                 reserveRepository.save(confirm)
-            })
+            }
         } catch (e: Exception) {
             val cancel = reservation.cancel()
             reserveRepository.save(cancel)

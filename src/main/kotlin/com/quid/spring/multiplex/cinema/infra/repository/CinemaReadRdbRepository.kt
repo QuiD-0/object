@@ -1,9 +1,7 @@
 package com.quid.spring.multiplex.cinema.infra.repository
 
-import com.quid.spring.multiplex.cinema.domain.Cinema
-import com.quid.spring.multiplex.cinema.domain.CinemaReadRepository
-import com.quid.spring.multiplex.cinema.domain.MovieSchedule
-import com.quid.spring.multiplex.cinema.domain.Theater
+import com.quid.spring.multiplex.cinema.domain.*
+import com.quid.spring.multiplex.cinema.infra.repository.entity.toBoxOffice
 import com.quid.spring.multiplex.cinema.infra.repository.entity.toCinema
 import com.quid.spring.multiplex.cinema.infra.repository.entity.toMovieSchedule
 import com.quid.spring.multiplex.cinema.infra.repository.entity.toTheater
@@ -16,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional
 class CinemaReadRdbRepository(
     private val cinemaJpaRepository: CinemaJpaRepository,
     private val movieScheduleJpaRepository: MovieScheduleJpaRepository,
-    private val theaterJpaRepository: TheaterJpaRepository
+    private val theaterJpaRepository: TheaterJpaRepository,
+    private val boxOfficeJpaRepository: BoxOfficeJpaRepository
 ) : CinemaReadRepository {
 
     override fun findById(id: Long): Cinema {
@@ -51,5 +50,11 @@ class CinemaReadRdbRepository(
         return theaterJpaRepository.findByIdOrNull(theaterId)
             ?.let { toTheater(it) }
             ?: throw IllegalArgumentException("Theater not found with id: $theaterId")
+    }
+
+    override fun findBoxOfficeBySchedule(movieScheduleId: Long): BoxOffice {
+        return boxOfficeJpaRepository.findByMovieScheduleId(movieScheduleId)
+            ?.let { toBoxOffice(it) }
+            ?: throw IllegalArgumentException("Box office not found with movie schedule id: $movieScheduleId")
     }
 }

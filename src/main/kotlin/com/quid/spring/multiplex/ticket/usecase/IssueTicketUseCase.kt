@@ -2,7 +2,7 @@ package com.quid.spring.multiplex.ticket.usecase
 
 import com.quid.spring.multiplex.cinema.usecase.CinemaFindUseCase
 import com.quid.spring.multiplex.movie.usecase.MovieFindUseCase
-import com.quid.spring.multiplex.reservation.ReserveFindUseCase
+import com.quid.spring.multiplex.reservation.usecase.ReserveFindUseCase
 import com.quid.spring.multiplex.reservation.usecase.ReserveSaveUseCase
 import com.quid.spring.multiplex.ticket.domain.IssueTicketValidator
 import com.quid.spring.multiplex.ticket.domain.Ticket
@@ -14,7 +14,7 @@ import org.springframework.transaction.support.TransactionTemplate
 @Service
 class IssueTicketUseCase(
     private val reserveFind: ReserveFindUseCase,
-    private val reserveMerge: ReserveSaveUseCase,
+    private val reserveUpdate: ReserveSaveUseCase,
     private val movie: MovieFindUseCase,
     private val cinema: CinemaFindUseCase,
     private val ticketWrite: TicketWriteRepository,
@@ -32,7 +32,7 @@ class IssueTicketUseCase(
         val updatedReservation = reservation.issueComplete()
 
         return transactionTemplate.execute {
-            reserveMerge.invoke(updatedReservation)
+            reserveUpdate.invoke(updatedReservation)
             ticketWrite.save(ticket)
         }!!
     }
