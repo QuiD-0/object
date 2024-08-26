@@ -15,8 +15,8 @@ import org.springframework.transaction.support.TransactionTemplate
 class IssueTicketUseCase(
     private val reserveFind: ReserveFindUseCase,
     private val reserveMerge: ReserveSaveUseCase,
-    private val movieFind: MovieFindUseCase,
-    private val cinemaFind: CinemaFindUseCase,
+    private val movie: MovieFindUseCase,
+    private val cinema: CinemaFindUseCase,
     private val ticketWrite: TicketWriteRepository,
     private val transactionTemplate: TransactionTemplate
 ) {
@@ -24,14 +24,11 @@ class IssueTicketUseCase(
         val reservation = reserveFind.findBy(reservationId)
         IssueTicketValidator(reservation).execute()
 
-        val scheduleId = reservation.scheduleId
-        val cinema = cinemaFind.findBy(scheduleId)
-
-        val movieSchedule = cinema.findMovieScheduleBy(scheduleId)
+        val movieSchedule = cinema.findMovieScheduleBy(reservation.scheduleId)
         val theater = cinema.findTheaterBy(movieSchedule.theaterId)
-        val movie = movieFind.findBy(movieSchedule.movieId)
+        val reservedMovie = movie.findBy(movieSchedule.movieId)
 
-        val ticket = issueTicket(reservation, movieSchedule, movie.title, theater.name)
+        val ticket = issueTicket(reservation, movieSchedule, reservedMovie.title, theater.name)
         val updatedReservation = reservation.issueComplete()
 
         return transactionTemplate.execute {
